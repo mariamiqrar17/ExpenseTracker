@@ -1,18 +1,11 @@
 import React, { useContext } from 'react';
 import { GlobalContext } from '../context/GlobalState';
 
-// Money formatter function
+//Money formatter function
 function moneyFormatter(num) {
-  // Check if the absolute value of num is greater than or equal to 1000
-  if (Math.abs(num) >= 1000) {
-    const formattedNum = (Math.abs(num) / 1000).toFixed(0);
-    return `$ ${formattedNum}k`;
-  }
-
-  // If not, format as usual
   let p = num.toFixed(2).split('.');
   return (
-    '$ ' + (p[0].split('')[0] === '-' ? '-' : '') +
+    '$ ' + (p[0].split('')[0]=== '-' ? '-' : '') +
     p[0]
       .split('')
       .reverse()
@@ -24,7 +17,7 @@ function moneyFormatter(num) {
   );
 }
 
-const Balance = () => {
+let Balance = () => {
   const { transactions } = useContext(GlobalContext);
 
   const amounts = transactions.map(transaction => transaction.amount);
@@ -33,10 +26,9 @@ const Balance = () => {
 
   return (
     <>
-      <p className='text-[1rem] font-bold text-white'>Your Balance</p>
-      <p className='text-[1.5rem] text-[white] font-bold'>{moneyFormatter(total)}</p>
+      <p className=' text-[1rem] font-bold text-white'>Your Balance</p>
+    <p className='text-[1.5rem] text-[white] font-bold'>{moneyFormatter(total)}</p>
     </>
-  );
-};
-
+  )
+}
 export default Balance;
