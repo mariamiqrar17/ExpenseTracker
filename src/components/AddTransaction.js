@@ -15,16 +15,14 @@ export const AddTransaction = () => {
     validationSchema: Yup.object({
       text: Yup.string()
         .required("Text is required")
-        .min(5, "Text must be at least 5 characters")
-        .max(10, "Text must be at most 10 characters")
         .matches(
           /^[a-zA-Z\s]+$/,
-          "Text can only contain alphabetical characters"
+          "Only alphabetical characters"
         ),
 
         amount: Yup.string()
-        .matches(/^-?\d+$/, 'Amount must be a positive or negative integer')
-        .required('Amount is Required')
+        .matches(/^-?\d+$/, 'Amount must be a positive or negative number')
+        .required('Required')
         
     }),
 
